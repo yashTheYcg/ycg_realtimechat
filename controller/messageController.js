@@ -60,7 +60,7 @@ exports.createGroup = async (req, res) => {
     const { senderId, content } = req.body;
   
     try {
-      const currentGroup = await Group.findOne({_id:groupId});
+      const currentGroup = await Group.findOne({_id:groupId, members: senderId});
       if(currentGroup){
         const message = await Message.create({ senderId, groupId, content });
         res.status(201).json({data:message});
