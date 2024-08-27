@@ -4,6 +4,7 @@ const path = require('path');
 
 dotenv.config({ path: path.join(__dirname, "../config.env") });
 
+
 const socketAuth = (req,res,next) => {
     const token = req.header('Authorization');
 
@@ -15,7 +16,7 @@ const socketAuth = (req,res,next) => {
             next();
         } catch (error) {
             console.error("Socket authentication error:", error);
-            next(new Error("Authentication error"));
+            return res.status(500).json({message:"Invalid Token"});
         }
     } else {
         next(new Error("Authentication error"));
