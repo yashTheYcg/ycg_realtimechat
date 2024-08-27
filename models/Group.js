@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const GroupSchema = new mongoose.Schema({
-  groupId:{
-        type:String,
-        required:true,
+  userId:{ //userId of login user
+    type:String,
+    required:true
   },
   name: { //group name
     type: String,
@@ -13,7 +13,7 @@ const GroupSchema = new mongoose.Schema({
     type: String,
     required: true,
   }],
-  createdAt: {
+  timeStamp: {
     type: Date,
     default: Date.now,
   },
